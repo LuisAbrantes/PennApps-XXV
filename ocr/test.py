@@ -36,22 +36,17 @@ def process_file(file_path):
         return "Format don't supported."
 
 
-def buscar_arquivos():
-    # Extensões de arquivos a serem buscados
-    extensoes = ['*.png', '*.jpg', '*.jpeg', '*.pdf', '*.docx']
+def search_files():
+    extensions = ['*.png', '*.jpg', '*.jpeg', '*.pdf', '*.docx']
     
-    # Lista para armazenar os arquivos encontrados
-    arquivos_encontrados = []
+    found_files = []
     
-    # Buscar arquivos com as extensões especificadas
-    for extensao in extensoes:
-        arquivos_encontrados.extend(glob.glob(extensao))
+    for extension in extensions:
+        found_files.extend(glob.glob(extension))
     
-    # Processar cada arquivo encontrado
-    for arquivo in arquivos_encontrados:
-        resultado = process_file(arquivo)
-        print(f"Arquivo: {arquivo}, Resultado: {resultado}")        
+    for file in found_files:
+        result = process_file(file)
+        print(f"File: {file}, Result: {result}")        
         print('-' * 20)
 
-# Chamar a função para buscar e processar os arquivos
-buscar_arquivos()
+search_files()
