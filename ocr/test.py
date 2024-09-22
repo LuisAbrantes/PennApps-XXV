@@ -4,6 +4,7 @@ import pdfplumber
 import docx
 import os
 import glob
+import time
 
 def read_image(file_path):
     img = Image.open(file_path)
@@ -43,10 +44,13 @@ def search_files():
     
     for extension in extensions:
         found_files.extend(glob.glob(extension))
-    
+
     for file in found_files:
+        start_time = time.time()  # Start time measurement
         result = process_file(file)
-        print(f"File: {file}, Result: {result}")        
+        end_time = time.time()  # End time measurement
+        execution_time = end_time - start_time  # Calculate execution time
+        print(f"File: {file}, Result: {result}, Execution Time: {execution_time:.4f} seconds")
         print('-' * 20)
 
 search_files()
