@@ -3,6 +3,7 @@ import pytesseract
 import pdfplumber
 import docx
 import os
+import glob
 
 def read_image(file_path):
     img = Image.open(file_path)
@@ -34,6 +35,23 @@ def process_file(file_path):
     else:
         return "Format don't supported."
 
-file_path = 'test.docx'  
-text = process_file(file_path)
-print(text)
+
+def buscar_arquivos():
+    # Extensões de arquivos a serem buscados
+    extensoes = ['*.png', '*.jpg', '*.jpeg', '*.pdf', '*.docx']
+    
+    # Lista para armazenar os arquivos encontrados
+    arquivos_encontrados = []
+    
+    # Buscar arquivos com as extensões especificadas
+    for extensao in extensoes:
+        arquivos_encontrados.extend(glob.glob(extensao))
+    
+    # Processar cada arquivo encontrado
+    for arquivo in arquivos_encontrados:
+        resultado = process_file(arquivo)
+        print(f"Arquivo: {arquivo}, Resultado: {resultado}")        
+        print('-' * 20)
+
+# Chamar a função para buscar e processar os arquivos
+buscar_arquivos()
