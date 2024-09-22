@@ -46,10 +46,10 @@ def search_files():
         found_files.extend(glob.glob(extension))
 
     for file in found_files:
-        start_time = time.time()  # Start time measurement
+        start_time = time.time()
         result = process_file(file)
-        end_time = time.time()  # End time measurement
-        execution_time = end_time - start_time  # Calculate execution time
+        end_time = time.time()  
+        execution_time = end_time - start_time 
         print(f"File: {file}, Result: {result}, Execution Time: {execution_time:.4f} seconds")
         print('-' * 20)
 
